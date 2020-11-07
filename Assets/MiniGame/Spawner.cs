@@ -49,8 +49,8 @@ public class Spawner : MonoBehaviour
         {
             timer.tiempo = intervalo;
             int objecto = Random.Range(0, Prefabs.Count);
-            float _area = transform.position.x + Random.Range(-Area, Area);
             var nuevo_objeto = Instantiate(Prefabs[objecto]);
+            float _area = transform.position.x + Random.Range(-(Area - (0.5f * nuevo_objeto.transform.localScale.x)) , (Area - (0.5f * nuevo_objeto.transform.localScale.x)));
             nuevo_objeto.transform.parent = null;
             nuevo_objeto.transform.position = new Vector3(_area, transform.position.y, transform.position.z);
 

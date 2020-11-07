@@ -42,13 +42,18 @@ public class ZigsagEnemy : MonoBehaviour
     {
         float distancia = Mathf.Abs(transform.position.x - Target);
         Debug.Log(distancia);
-        if (distancia < 1.5f)
+        if (distancia < 1.5f )
         {
-            mov *= -1;
-            Target = transform.position.x + (Distancia * mov);
+            Cambiar_direccion();
         }
         Vector3 vel = new Vector3(Horizontal_speed * mov * Time.deltaTime, 0f,0f ); 
         transform.Translate(vel);
+
+    }
+    void Cambiar_direccion()
+    {
+        mov *= -1;
+        Target = transform.position.x + (Distancia * mov);
 
     }
 }

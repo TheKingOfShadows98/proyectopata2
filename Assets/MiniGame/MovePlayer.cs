@@ -6,10 +6,13 @@ public class MovePlayer : MonoBehaviour
 {
     [SerializeField] private bool Active;
     [SerializeField] private float Speed;
+
+    [SerializeField] private Rigidbody2D rb2d;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb2d = GetComponent<Rigidbody2D>();
     }
 
     public void Activar( bool activado)
@@ -22,7 +25,8 @@ public class MovePlayer : MonoBehaviour
     {
         if (Active)
         {
-            transform.Translate(new Vector2(Input.GetAxisRaw("Horizontal") * Speed * Time.deltaTime, 0f));
+            //transform.Translate(new Vector2(Input.GetAxisRaw("Horizontal") * Speed * Time.deltaTime, 0f));
+            rb2d.velocity = new Vector2(Input.GetAxisRaw("Horizontal") * Speed, 0f) * Time.deltaTime;
         }
     }
 }
